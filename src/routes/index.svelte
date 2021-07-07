@@ -1,4 +1,5 @@
 <script lang="ts">
+	export const prerender = true;
 	import Icon from '@iconify/svelte';
 	const DICT_TARGET =
 		'https://raw.githubusercontent.com/mkpoli/rime-toki-pona-munjan/main/toki_pona.dict.yaml'
