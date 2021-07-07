@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@iconify/svelte': ^2.0.0-beta.1
-  '@sveltejs/adapter-vercel': ^1.0.0-next.0
+  '@sveltejs/adapter-vercel': ^1.0.0-next.24
   '@sveltejs/kit': next
   '@typescript-eslint/eslint-plugin': ^4.19.0
   '@typescript-eslint/parser': ^4.19.0
@@ -19,7 +19,7 @@ specifiers:
 
 devDependencies:
   '@iconify/svelte': 2.0.0-beta.1
-  '@sveltejs/adapter-vercel': 1.0.0-next.0
+  '@sveltejs/adapter-vercel': 1.0.0-next.24
   '@sveltejs/kit': 1.0.0-next.122_svelte@3.38.3
   '@typescript-eslint/eslint-plugin': 4.28.2_5031fffb45dfb7117e61c1d8ea1ef3ff
   '@typescript-eslint/parser': 4.28.2_eslint@7.30.0+typescript@4.3.5
@@ -123,8 +123,10 @@ packages:
       picomatch: 2.3.0
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.0:
-    resolution: {integrity: sha512-dQf40/2vrgRfuQ++tIAlvEgjdGUkXJTSjO5syqJd5oH2HDbP3Shi+2AxWpKAqRFGyRbXDe9ej0MK1G2soZP4fQ==}
+  /@sveltejs/adapter-vercel/1.0.0-next.24:
+    resolution: {integrity: sha512-fTJptAA+UPF6HloAeRgfRNR85i2EDCaGN4XS028aXp9qwZ8X7Dhh9mFxRV4hko5USzj3j/HsH672Mp8OsAu12A==}
+    dependencies:
+      esbuild: 0.12.15
     dev: true
 
   /@sveltejs/kit/1.0.0-next.122_svelte@3.38.3:
