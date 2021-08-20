@@ -45,12 +45,12 @@
 </script>
 
 <div class="container">
-	<textarea class="text-box" bind:value={input} />
+	<textarea class="text-box input-box" bind:value={input} />
 	<!-- <div class="button-container"></div> -->
 	<button class="convert" on:click={onConvert}>
 		<Icon class="icon" icon="mdi:transfer-down" />
 	</button>
-	<div class="text-box">{output}</div>
+	<div class="text-box output-box">{output}</div>
 </div>
 
 <style>
@@ -76,29 +76,41 @@
 	}
 
 	.container {
-		width: 800px;
+		width: 820px; /* 800px -> 820px to account for new 10px padding */
+		max-width: 100%;
 		margin: 0 auto;
-		padding: 3rem 0;
+		padding: 3rem 10px; /* adds a horizontal padding for smaller screens */
+		box-sizing: border-box; /* prevents the horizontal padding from causing overflow */
 	}
 
 	button.convert {
 		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		
 		background: white;
+		background: rgba(255, 255, 255, 0.9);
+		
 		width: 5rem;
 		height: 5rem;
 		margin: -2rem auto;
 		margin-bottom: -1rem;
 		border: none;
 		border-radius: 50%;
-		box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 10%);
-		background: rgba(255, 255, 255, 0.9);
-		backdrop-filter: blur(10px);		
+		
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-size: 3rem;
 		position: relative;
 		z-index: 3;
+		
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px); /* Safari */
+		
+		box-shadow: 1px 2px 3px 3px rgba(0, 0%, 0%, 10%);
+		-webkit-box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.1); /* Chrome, Safari, Firefox, IE, Opera, ... */
+		-moz-box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.1); /* earlier versions of Firefox*/
 	}
 
 	button.convert:hover {
@@ -116,16 +128,38 @@
 
 	.text-box {
 		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		
 		padding: 1.2em 1.7em;
 		border-radius: 10px;
 		border: none;
-		box-shadow: 2px 2px 1px 5px rgba(0, 0, 0, 1%);
+		width: 100%;
+		box-sizing: border-box; /* fixes overflow issue on smaller screens; box-sizing does not inherit */
+		min-height: calc((100vh - 9rem)/ 2);
+		
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px); /* Safari */
+		
+		box-shadow: 2px 2px 1px 5px rgba(0,0%,0%,1%);
+		-webkit-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.03); /* Chrome, Safari, Firefox, IE, Opera, ... */
+		-moz-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.03); /* earlier versions of Firefox*/
+	}
+	
+	.input-box {
 		background: white;
 		background: rgba(255, 255, 255, 0.8);
-		backdrop-filter: blur(10px);
-		width: 100%;
-		min-height: calc((100vh - 10em) / 2);
-
+		color: black;
+		color: rgb(0, 6, 94); /* For browsers that don't support RGB percentages */
 		color: rgb(0% 2.46% 36.8%);
 	}
+	
+	.output-box {
+		/* makes the output box look different from the input box to avoid user confusion */
+		background: black;
+		background: rgba(0, 6, 65, 0.6); /* basically the text color for .input-box, but with some transparency, and with 
+					            the blue component toned down a bit */
+		color: #eee;
+	}
+		
 </style>
