@@ -1,4 +1,8 @@
 <script lang="ts">
+	import Converter from '$lib/Converter.svelte'
+	import Navigator from '$lib/Navigator.svelte'
+	import Section from '$lib/Section.svelte'
+
 	import MdiTransferDown from '~icons/mdi/transfer-down'
 	const DICT_TARGET =
 		'https://raw.githubusercontent.com/mkpoli/rime-toki-pona-munjan/main/toki_pona.dict.yaml'
@@ -43,20 +47,82 @@
 		if (!input) return
 		output = await convertTokiPona2MunJan(input)
 	} /* TODO: sitelen munjan -> sitelen toki pona  */
+
+	let inView: boolean[] = Array(4).fill(false)
+
+	function onenter(index: number) {
+		return () => {
+			inView[index] = true
+		}
+	}
+
+	function onleave(index: number) {
+		return () => {
+			inView[index] = false
+		}
+	}
 </script>
 
 <svelte:head>
 	<title>書文言｜sitelen munjan</title>
 </svelte:head>
 
-<div class="container">
-	<textarea class="text-box input-box" bind:value={input} />
-	<!-- <div class="button-container"></div> -->
-	<button class="convert" on:click={onConvert}>
-		<MdiTransferDown class="icon" />
-	</button>
-	<div class="text-box output-box">{output}</div>
-</div>
+<Navigator {inView} />
+
+<main>
+	<Section id="home" on:enter={onenter(0)} on:leave={onleave(0)}>
+		<h1>
+			<span lang="art-HanT-x-tokipona">書文言</span><br />
+			sitelen Munjan
+		</h1>
+	</Section>
+
+	<Section id="introduction" on:enter={onenter(1)} on:leave={onleave(1)}>
+		<h2>
+			<span lang="art-HanT-x-tokipona">來葉</span><br />kama lipu<br /><span lang="en"
+				>Introduction</span
+			>
+		</h2>
+		<p>
+			<b>書文言</b>者作乎書于<a href="tokipona.org" target="_blank">言善</a>以書中國新無。
+		</p>
+
+		<p>
+			<b>sitelen Munjan</b> li pali e sitelen tawa
+			<a href="tokipona.org" target="_blank">toki pona</a> kepeken sitelen Sonko sin ala.
+		</p>
+
+		<p lang="en">
+			<b>Sitelen Munjan</b> is a Classical-Chinese-styled script for writing
+			<a href="tokipona.org" target="_blank">Toki Pona</a> with Hanzi.
+		</p>
+	</Section>
+
+	<Section id="converter" on:enter={onenter(2)} on:leave={onleave(2)}>
+		<h2>
+			<span lang="art-HanT-x-tokipona">器書異</span><br />
+			ilo sitelen ante
+			<br />
+			<span lang="en">Converter</span>
+		</h2>
+		<Converter />
+	</Section>
+
+	<Section id="wordlist" on:enter={onenter(3)} on:leave={onleave(3)}>
+		<h2>
+			<span lang="art-HanT-x-tokipona">葉言</span><br />
+			lipu toki
+			<br /><span lang="en">Word List</span>
+		</h2>
+		<a
+			href="https://github.com/mkpoli/rime-toki-pona-munjan/blob/main/toki_pona.dict.yaml"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			toki_pona.dict.yaml
+		</a>
+	</Section>
+</main>
 
 <style>
 	:global(html) {
@@ -67,64 +133,28 @@
 		height: 100%;
 		margin: 0;
 		font-size: 2em;
+		color: white;
+
 		background: rgba(0, 16, 148, 1) 100%;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-image: linear-gradient(
 			0deg,
-			rgba(241, 253, 249, 1) 0%,
-			rgba(0, 212, 255, 1) 26%,
+			rgb(169, 220, 203) 0%,
+			rgb(2, 167, 199) 26%,
 			rgba(0, 16, 148, 1) 100%
 		);
 		box-sizing: border-box;
 	}
 
-	textarea {
-		resize: none;
-		font-size: inherit;
-		font-family: inherit;
+	:global(*) {
+		box-sizing: border-box;
 	}
 
-	.container {
-		width: 820px; /* 800px -> 820px to account for new 10px padding */
-		max-width: 100%;
-		margin: 0 auto;
-		padding: 3rem 10px; /* adds a horizontal padding for smaller screens */
-		box-sizing: border-box; /* prevents the horizontal padding from causing overflow */
-	}
-
-	button.convert {
-		appearance: none;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-
-		background: white;
-		background: rgba(255, 255, 255, 0.9);
-
-		width: 5rem;
-		height: 5rem;
-		margin: -2rem auto;
-		margin-bottom: -1rem;
-		border: none;
-		border-radius: 50%;
-
+	main {
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 3rem;
-		position: relative;
-		z-index: 3;
-
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px); /* Safari */
-
-		box-shadow: 1px 2px 3px 3px rgba(0, 0%, 0%, 10%);
-		-webkit-box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.1); /* Chrome, Safari, Firefox, IE, Opera, ... */
-		-moz-box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.1); /* earlier versions of Firefox*/
-	}
-
-	button.convert:hover {
-		filter: brightness(1.2);
+		flex-direction: column;
+		width: 100%;
 	}
 
 	:global(.icon) {
@@ -136,44 +166,37 @@
 		color: #0092d7;
 	}
 
-	.text-box {
-		appearance: none;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-
-		padding: 1.2em 1.7em;
-		border-radius: 10px;
-		border: none;
-		width: 100%;
-		box-sizing: border-box; /* fixes overflow issue on smaller screens; box-sizing does not inherit */
-		min-height: calc((100vh - 9rem) / 2);
-
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px); /* Safari */
-
-		box-shadow: 2px 2px 1px 5px rgba(0, 0%, 0%, 1%);
-		-webkit-box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.03); /* Chrome, Safari, Firefox, IE, Opera, ... */
-		-moz-box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.03); /* earlier versions of Firefox*/
+	h1,
+	h2 {
+		text-align: center;
+		margin: 0;
 	}
 
-	.input-box {
-		background: white;
-		background: rgba(255, 255, 255, 0.8);
-		color: black;
-		color: rgb(0, 6, 94); /* For browsers that don't support RGB percentages */
-		color: rgb(0% 2.46% 36.8%);
+	h1 {
+		font-size: 3em;
+		line-height: 1.5em;
 	}
 
-	.output-box {
-		/* makes the output box look different from the input box to avoid user confusion */
-		background: black;
-		background: rgba(
-			0,
-			6,
-			65,
-			0.6
-		); /* basically the text color for .input-box, but with some transparency, and with 
-					            the blue component toned down a bit */
-		color: #eee;
+	h2 {
+		line-height: 1.45em;
+	}
+
+	h2 > span[lang='en'] {
+		font-size: 0.8em;
+	}
+
+	h2 {
+		margin-bottom: 1em;
+	}
+
+	p {
+		max-width: 30em;
+		text-align: center;
+		margin: 0;
+		margin-bottom: 1em;
+	}
+
+	a {
+		color: inherit;
 	}
 </style>

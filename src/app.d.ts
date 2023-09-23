@@ -12,4 +12,6 @@ declare global {
 	}
 }
 
-export {}
+declare module 'smartquotes' {
+	export default function smartquotes(input: string): string
+}
