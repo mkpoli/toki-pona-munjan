@@ -35,9 +35,10 @@
 		if (!dictionary) {
 			dictionary = await getDict()
 		}
+
 		const words = tokiPona
 			.split(/([\W])/)
-			.filter((word) => word && word != ' ')
+			.filter((word) => word !== ' ')
 			.map((word) => (word in PUNCTUATIONS ? PUNCTUATIONS[word] : word))
 		return words.map((word) => (dictionary[word] ? dictionary[word] : word)).join('')
 	}
@@ -145,5 +146,6 @@
 		); /* basically the text color for .input-box, but with some transparency, and with 
 					            the blue component toned down a bit */
 		color: #eee;
+		white-space: break-spaces;
 	}
 </style>
