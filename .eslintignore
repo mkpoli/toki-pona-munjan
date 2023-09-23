@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-/static
 /build
 /.svelte-kit
 /package
