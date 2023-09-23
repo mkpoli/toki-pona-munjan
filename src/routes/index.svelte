@@ -44,6 +44,10 @@
 	
 </script>
 
+<svelte:head>
+	<title>書文言｜sitelen munjan</title>
+</svelte:head>
+
 <div class="container">
 	<textarea class="text-box" bind:value={input} />
 	<!-- <div class="button-container"></div> -->
