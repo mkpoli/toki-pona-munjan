@@ -26,7 +26,9 @@ This project was an original idea of mine, but there are already many similar pr
 
 * [toki pona in chinese/kanji?](http://forums.tokipona.org/viewtopic.php?t=1519) pi jan Josan (2010-07-22)
 * [Classic Word List (Improved!)](http://tokipona.net/tp/ClassicWordList.aspx) pi jan Mato (< 2013-01-08) [WebArchive](https://web.archive.org/web/20220921122642/http://tokipona.net/tp/ClassicWordList.aspx)
+* [Classical Chinese writing system](http://forums.tokipona.org/viewtopic.php?t=2549) pi jan Lili (2016-03-31)
 * [言好！Toki pona written with Han characters.](http://forums.tokipona.org/viewtopic.php?t=2689) pi janU (2018-03-04)
+* [Proposed revision to Chinese character set](http://forums.tokipona.org/viewtopic.php?t=2740) pi jan enervation (2019-04-14)
 * [An attempt at a Chinese seal script inspired sitelen pona](https://www.reddit.com/r/tokipona/comments/eobrq5/an_attempt_at_a_chinese_seal_script_inspired/) pi jan Ose (2020-01-14)
 * [言良 - Toki Pona with Hanzi](https://www.reddit.com/r/tokipona/comments/g4lbif/%E8%A8%80%E8%89%AF_toki_pona_with_hanzi/) pi jan StuleBackery (2020-04-20)
 * [sitelen Lemon](https://www.reddit.com/r/tokipona/comments/j6nvxd/sitelen_lemon_an_aesthetically_consistent/) pi jan neoncatnine (2020-10-07)
