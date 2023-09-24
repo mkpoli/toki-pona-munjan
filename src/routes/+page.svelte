@@ -98,7 +98,12 @@
 		</p>
 	</Section>
 
-	<Section id="converter" on:enter={onenter(2)} on:leave={onleave(2)}>
+	<Section
+		id="converter"
+		on:enter={onenter(2)}
+		on:leave={onleave(2)}
+		style="min-height: 100vh; height:auto;"
+	>
 		<h2>
 			<span lang="art-HanT-x-tokipona">器書異</span><br />
 			ilo sitelen ante

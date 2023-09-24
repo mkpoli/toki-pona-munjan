@@ -4,6 +4,7 @@
 	import { fade, type TransitionConfig } from 'svelte/transition'
 	import { cubicOut, cubicInOut } from 'svelte/easing'
 	export let id: string
+	export let style: string
 
 	const dispatch = createEventDispatcher<{
 		enter: void
@@ -37,6 +38,7 @@
 	{id}
 	use:inview={{ rootMargin: '-30%' }}
 	class:active={inView}
+	{style}
 	on:inview_enter={() => dispatch('enter')}
 	on:inview_leave={() => dispatch('leave')}
 	on:inview_change={({ detail }) => (inView = detail.inView)}
