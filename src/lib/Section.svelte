@@ -59,9 +59,10 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
 		text-shadow: 0 0 2em rgba(0, 0, 0, 0.5), 0 0 0.5em rgba(0, 0, 0, 0.25),
 			0 0 0.1em rgba(0, 0, 0, 0.1);
 		padding: 0 2em;
+		min-height: 100vh;
+		height: auto;
 	}
 </style>
