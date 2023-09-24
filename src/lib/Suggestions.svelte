@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte'
+	import { createEventDispatcher, tick } from 'svelte'
 	import { fly, fade } from 'svelte/transition'
 
 	export let suggestions: string[]
@@ -33,9 +33,8 @@
 	function initEvents(textarea: HTMLTextAreaElement) {
 		textarea.addEventListener('keydown', (e) => {
 			if (!shown) return
-			if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(e.key)) {
-				dispatch('select', pages[page][Number(e.key)])
-				shown = false
+			if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
+				e.preventDefault()
 				return
 			}
 			switch (e.key) {
@@ -48,14 +47,27 @@
 				}
 			}
 		})
-		textarea.addEventListener('keyup', (e) => {
+		textarea.addEventListener('keyup', async (e) => {
 			if (!shown) return
 			console.log(e.key)
-
+			if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
+				const value = pages[page][Number(e.key) - 1]
+				if (!value) return
+				dispatch('select', pages[page][Number(e.key) - 1])
+				await tick()
+				shown = false
+				e.preventDefault()
+				return
+			}
 			switch (e.key) {
 				case 'Tab':
 				case 'Enter': {
+					if (!pages[page][highlighted]) return
+
 					dispatch('select', pages[page][highlighted])
+					await tick()
+					shown = false
+					e.preventDefault()
 					break
 				}
 				case 'Escape': {
