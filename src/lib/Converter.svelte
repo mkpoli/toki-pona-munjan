@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MdiTransferDown from '~icons/mdi/transfer-down'
 	import smartquotes from 'smartquotes'
+	import { onMount } from 'svelte'
 	const DICT_TARGET =
 		'https://raw.githubusercontent.com/mkpoli/rime-toki-pona-munjan/main/toki_pona.dict.yaml'
 
@@ -31,11 +32,7 @@
 	}
 
 	/* TODO: sitelen toki pona -> sitelen munjan */
-	async function convertTokiPona2MunJan(tokiPona: string): Promise<string> {
-		if (!dictionary) {
-			dictionary = await getDict()
-		}
-
+	function convertTokiPona2MunJan(tokiPona: string): string {
 		const words = tokiPona
 			.split(/([\W])/)
 			.filter((word) => word !== ' ')
@@ -43,18 +40,23 @@
 		return words.map((word) => (dictionary[word] ? dictionary[word] : word)).join('')
 	}
 
-	async function onConvert() {
-		if (!input) return
-		output = await convertTokiPona2MunJan(smartquotes(input))
-	} /* TODO: sitelen munjan -> sitelen toki pona  */
+	onMount(async () => {
+		dictionary = await getDict()
+	})
+
+	$: if (dictionary && input) {
+		output = convertTokiPona2MunJan(smartquotes(input))
+	}
+
+	// $: convert =
 </script>
 
 <div class="container">
 	<textarea class="text-box input-box" bind:value={input} />
 	<!-- <div class="button-container"></div> -->
-	<button class="convert" on:click={onConvert}>
+	<div class="convert">
 		<MdiTransferDown class="icon" />
-	</button>
+	</div>
 	<div class="text-box output-box">{output}</div>
 </div>
 
@@ -73,7 +75,7 @@
 		box-sizing: border-box; /* prevents the horizontal padding from causing overflow */
 	}
 
-	button.convert {
+	.convert {
 		appearance: none;
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -101,10 +103,6 @@
 		box-shadow: 1px 2px 3px 3px rgba(0, 0%, 0%, 10%);
 		-webkit-box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.1); /* Chrome, Safari, Firefox, IE, Opera, ... */
 		-moz-box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.1); /* earlier versions of Firefox*/
-	}
-
-	button.convert:hover {
-		filter: brightness(1.2);
 	}
 
 	.text-box {
