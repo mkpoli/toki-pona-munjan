@@ -4,7 +4,7 @@
 	import { fade, type TransitionConfig } from 'svelte/transition'
 	import { cubicOut, cubicInOut } from 'svelte/easing'
 	export let id: string
-	export let style: string
+	export let style: string | undefined = undefined
 
 	const dispatch = createEventDispatcher<{
 		enter: void
