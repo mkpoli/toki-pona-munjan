@@ -1,12 +1,14 @@
 <script lang="ts">
 	import MdiTransferDown from '~icons/mdi/transfer-down'
 	import smartquotes from 'smartquotes'
-	import { onMount } from 'svelte'
+	import { onMount, tick } from 'svelte'
+	import { caret } from './caret'
+	import Suggestions from './Suggestions.svelte'
 	const DICT_TARGET =
 		'https://raw.githubusercontent.com/mkpoli/rime-toki-pona-munjan/main/toki_pona.dict.yaml'
 
 	// let textArea: HTMLTextAreaElement
-	let input: string
+	let input: string = ''
 	let output: string = ''
 
 	let dictionary: Record<string, string>
@@ -48,11 +50,72 @@
 		output = convertTokiPona2MunJan(smartquotes(input))
 	}
 
-	// $: convert =
+	let suggestionBox: HTMLDivElement
+
+	let suggestions: string[] = ['a', 'b', 'c']
+
+	// function getLastChar()
+
+	function compileSuggestions(input: string, caretPos: number): string[] {
+		// Get caret position
+		console.log('carretPos', caretPos)
+		console.log('inputLength', input.length)
+
+		// Get substring until caret position
+		const sub = input.slice(0, caretPos)
+		console.log('sub', sub)
+
+		// Get the last word
+		const lastWord = sub.split(/[\s\W]/).pop()
+
+		if (!lastWord) return []
+		return Object.keys(dictionary).filter((word) => word.startsWith(lastWord))
+	}
+
+	$: suggestions = compileSuggestions(input, caretPos)
+
+	let textArea: HTMLTextAreaElement
+
+	let caretRect: DOMRect | undefined = undefined
+	let caretPos: number = 0
 </script>
 
+<Suggestions
+	bind:box={suggestionBox}
+	{suggestions}
+	rect={caretRect}
+	{textArea}
+	on:select={async ({ detail: repl }) => {
+		const beforeCaret = input.slice(0, caretPos)
+		const lastWord = beforeCaret.split(/[\s\W]/).pop()
+		if (!lastWord) return
+		const afterCaret = input.slice(caretPos)
+		input =
+			beforeCaret.slice(0, -lastWord.length) +
+			repl +
+			(afterCaret.startsWith(' ') ? '' : ' ') +
+			afterCaret
+		await tick()
+		textArea.setSelectionRange(input.length - afterCaret.length, input.length - afterCaret.length)
+	}}
+/>
+
 <div class="container">
-	<textarea class="text-box input-box" bind:value={input} />
+	<textarea
+		class="text-box input-box"
+		bind:value={input}
+		bind:this={textArea}
+		use:caret
+		on:caretmove={({
+			detail: {
+				rect,
+				selection: { end }
+			}
+		}) => {
+			caretRect = rect
+			caretPos = end
+		}}
+	/>
 	<!-- <div class="button-container"></div> -->
 	<div class="convert">
 		<MdiTransferDown class="icon" />
@@ -96,9 +159,6 @@
 		font-size: 3rem;
 		position: relative;
 		z-index: 3;
-
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px); /* Safari */
 
 		box-shadow: 1px 2px 3px 3px rgba(0, 0%, 0%, 10%);
 		-webkit-box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.1); /* Chrome, Safari, Firefox, IE, Opera, ... */
@@ -145,5 +205,6 @@
 					            the blue component toned down a bit */
 		color: #eee;
 		white-space: break-spaces;
+		word-break: break-all;
 	}
 </style>
