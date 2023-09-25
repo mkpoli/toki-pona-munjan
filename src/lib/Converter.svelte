@@ -38,7 +38,11 @@
 
 	// function getLastChar()
 
-	function compileSuggestions(input: string, caretPos: number): string[] {
+	function compileSuggestions(
+		input: string,
+		caretPos: number,
+		dictionary: Record<string, string>
+	): string[] {
 		// Get caret position
 		console.log('carretPos', caretPos)
 		console.log('inputLength', input.length)
@@ -54,7 +58,9 @@
 		return Object.keys(dictionary).filter((word) => word.startsWith(lastWord))
 	}
 
-	$: suggestions = compileSuggestions(input, caretPos)
+	$: if ($dictionary) {
+		suggestions = compileSuggestions(input, caretPos, $dictionary)
+	}
 
 	let textArea: HTMLTextAreaElement
 
