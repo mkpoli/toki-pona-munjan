@@ -1,29 +1,15 @@
 <script lang="ts">
 	import MdiTransferDown from '~icons/mdi/transfer-down'
 	import smartquotes from 'smartquotes'
-	import { onMount, tick } from 'svelte'
+	import { tick } from 'svelte'
 	import { caret } from './caret'
 	import Suggestions from './Suggestions.svelte'
-	const DICT_TARGET =
-		'https://raw.githubusercontent.com/mkpoli/rime-toki-pona-munjan/main/toki_pona.dict.yaml'
+
+	import { dictionary } from '$lib/data'
 
 	// let textArea: HTMLTextAreaElement
 	let input: string = ''
 	let output: string = ''
-
-	let dictionary: Record<string, string>
-	async function getDict(): Promise<Record<string, string>> {
-		const response = await fetch(DICT_TARGET)
-		const text = await response.text()
-		const lines = text.split(/\r\n|\n/).slice(6)
-
-		const items = lines
-			.filter((line) => line && !line.startsWith('#') && line.includes('\t'))
-			.map((line) => line.split('\t'))
-			.map(([m, t]) => [t, m])
-
-		return Object.fromEntries(items)
-	}
 
 	const PUNCTUATIONS: Record<string, string> = {
 		'.': '。',
@@ -34,7 +20,7 @@
 	}
 
 	/* TODO: sitelen toki pona -> sitelen munjan */
-	function convertTokiPona2MunJan(tokiPona: string): string {
+	function convertTokiPona2MunJan(tokiPona: string, dictionary: Record<string, string>): string {
 		const words = tokiPona
 			.split(/([\W])/)
 			.filter((word) => word !== ' ')
@@ -42,12 +28,8 @@
 		return words.map((word) => (dictionary[word] ? dictionary[word] : word)).join('')
 	}
 
-	onMount(async () => {
-		dictionary = await getDict()
-	})
-
-	$: if (dictionary && input) {
-		output = convertTokiPona2MunJan(smartquotes(input))
+	$: if ($dictionary && input) {
+		output = convertTokiPona2MunJan(smartquotes(input), $dictionary)
 	}
 
 	let suggestionBox: HTMLDivElement
