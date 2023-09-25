@@ -2,51 +2,7 @@
 	import Converter from '$lib/Converter.svelte'
 	import Navigator from '$lib/Navigator.svelte'
 	import Section from '$lib/Section.svelte'
-
-	import MdiTransferDown from '~icons/mdi/transfer-down'
-	const DICT_TARGET =
-		'https://raw.githubusercontent.com/mkpoli/rime-toki-pona-munjan/main/toki_pona.dict.yaml'
-
-	// let textArea: HTMLTextAreaElement
-	let input: string
-	let output: string = ''
-
-	let dictionary: Record<string, string>
-	async function getDict(): Promise<Record<string, string>> {
-		const response = await fetch(DICT_TARGET)
-		const text = await response.text()
-		const lines = text.split(/\r\n|\n/).slice(6)
-
-		const items = lines
-			.filter((line) => line && !line.startsWith('#') && line.includes('\t'))
-			.map((line) => line.split('\t'))
-			.map(([m, t]) => [t, m])
-
-		return Object.fromEntries(items)
-	}
-
-	const PUNCTUATIONS = {
-		'.': '。',
-		',': '，',
-		':': '：'
-	}
-
-	/* TODO: sitelen toki pona -> sitelen munjan */
-	async function convertTokiPona2MunJan(tokiPona: string): Promise<string> {
-		if (!dictionary) {
-			dictionary = await getDict()
-		}
-		const words = tokiPona
-			.split(/([\W])/)
-			.filter((word) => word && word != ' ')
-			.map((word) => (word in PUNCTUATIONS ? PUNCTUATIONS[word] : word))
-		return words.map((word) => (dictionary[word] ? dictionary[word] : word)).join('')
-	}
-
-	async function onConvert() {
-		if (!input) return
-		output = await convertTokiPona2MunJan(input)
-	} /* TODO: sitelen munjan -> sitelen toki pona  */
+	import WordTable from '$lib/WordTable.svelte'
 
 	let inView: boolean[] = Array(4).fill(false)
 
@@ -114,13 +70,7 @@
 			lipu toki
 			<br /><span lang="en">Word List</span>
 		</h2>
-		<a
-			href="https://github.com/mkpoli/rime-toki-pona-munjan/blob/main/toki_pona.dict.yaml"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			toki_pona.dict.yaml
-		</a>
+		<WordTable />
 	</Section>
 </main>
 
