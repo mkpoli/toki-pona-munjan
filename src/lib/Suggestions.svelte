@@ -125,7 +125,13 @@
 		<ol>
 			{#each pages[page] as suggestion, i}
 				<li class:active={highlighted === i}>
-					<button>
+					<button
+						on:click={async () => {
+							dispatch('select', pages[page][highlighted])
+							await tick()
+							shown = false
+						}}
+					>
 						{suggestion}
 					</button>
 				</li>
