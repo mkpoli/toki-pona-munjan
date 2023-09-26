@@ -52,6 +52,12 @@
 			<b>Sitelen Munjan</b> is a Classical-Chinese-styled script for writing
 			<a href="tokipona.org" target="_blank">Toki Pona</a> with Hanzi.
 		</p>
+
+		<p>
+			Rime Schema: <a href="https://github.com/mkpoli/rime-toki-pona-munjan"
+				>rime-toki-pona-munjan</a
+			>
+		</p>
 	</Section>
 
 	<Section id="converter" on:enter={onenter(2)} on:leave={onleave(2)}>
