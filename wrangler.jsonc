@@ -1,0 +1,10 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "toki-pona-munjan",
+	"compatibility_date": "2026-08-01",
+	"workers_dev": true,
+	"preview_urls": true,
+	"assets": { "directory": "build" },
+	"routes": [{ "pattern": "munjan.mkpo.li/*", "zone_name": "mkpo.li" }],
+	"observability": { "enabled": true }
+}
