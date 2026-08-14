@@ -5,6 +5,6 @@
 	"workers_dev": true,
 	"preview_urls": true,
 	"assets": { "directory": "build" },
-	"routes": [{ "pattern": "munjan.mkpo.li/*", "zone_name": "mkpo.li" }],
+	"routes": [{ "pattern": "munjan.mkpo.li", "custom_domain": true }],
 	"observability": { "enabled": true }
 }
