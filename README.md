@@ -17,6 +17,7 @@ It is a exprerimental project made by Mkpoli in 2021-07-07.
 
 * jan Nanko
 * jan Vince14Genius
+* jan soweli Kisumoto
 
 ## 書如 / sitelen sama / Similar Projects
 
