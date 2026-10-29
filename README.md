@@ -46,3 +46,11 @@ This project was an original idea of mine, but there are already many similar pr
 ### 言 / toki / Discussions
 
 * [How to represent nimi ku suli in Chinese Hanzi / Japanese Kanji?](https://www.reddit.com/r/tokipona/comments/vaix6v/how_to_represent_nimi_ku_suli_in_chinese_hanzi/) (2022-06-12)
+
+## 資助 / jan pana / Sponsor
+
+mi pali e sitelen Munjan tawa toki pona tan olin taso. mi jo ala e pali ante, la mani lili tan pali sona li suli ala tawa tomo en moku. mani wan taso lon [Ko-fi](https://ko-fi.com/mkpoli) li pana e moku tawa mi tawa tenpo ni. jan pi esun ma li wile pana e mani la o sitelen tawa mkpoli@mkpo.li.
+
+I make Sitelen Munjan alone, out of love for toki pona. I don't have a job, and my small TA pay doesn't cover rent and food. Even one dollar on [Ko-fi](https://ko-fi.com/mkpoli) helps me eat today. Companies interested in sponsoring can write to mkpoli@mkpo.li.
+
+[![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/mkpoli)
