@@ -15,7 +15,7 @@ export type SponsorLocale = {
 }
 
 // The site writes in Literary Chinese, toki pona and English side by side; the dialog offers
-// the same three. The toki pona and Literary Chinese texts are unreviewed machine drafts.
+// the same three. The toki pona and Literary Chinese texts are unreviewed by a fluent reader.
 export const sponsorLocales: SponsorLocale[] = [
 	{
 		code: 'en',
@@ -41,35 +41,34 @@ export const sponsorLocales: SponsorLocale[] = [
 		lang: 'art-Latn-x-tokipona',
 		name: 'toki pona',
 		label: 'pana mani',
-		lead: 'mi pali e lipu ni tan olin pi toki pona en sitelen Hanzi, li pana e mani mute tawa ona. mi jo ala e pali, li jo e mani lili tan tawa sona, taso mani ni li lawa ala e mani tomo en mani moku. tenpo suno ante la, moku li wile e mani mute tawa mi.',
-		ask: 'o pana e mani tawa ni: mi ken pali tawa 🥺 mani wan taso li ken moku e mi lon tenpo ni.',
+		lead: 'mi olin e toki pona e sitelen Hanzi, la mi pali e lipu ni. mi pana e mani mute mi tawa ona. mi jo ala e pali. mani lili mi tan pali pi pana sona li lili tawa tomo en moku. tenpo suno ante la mi ken lili taso esun e moku.',
+		ask: 'o pana e pona tawa mi. ni la mi ken awen pali 🥺 mani wan taso li pana e moku tawa mi lon tenpo suno ni.',
 		howTo: 'nasin pi pana mani',
 		steps: [
-			'o luka e Ko-fi lon anpa.',
-			'o toki e mute mani. mani lili li pona.',
-			'o pana e mani kepeken PayPal anu lipu mani. o sitelen e nimi sina ala.'
+			'o luka e nena Ko-fi lon anpa.',
+			'o pana e mani pi mute wile sina. mani lili li pona.',
+			'o pana kepeken PayPal anu lipu mani. sina wile ala sitelen e nimi sina.'
 		],
-		kofi: 'tenpo wan anu tenpo ale',
-		company: 'pana mani pi kulupu pali',
-		companyHint:
-			'mi wile pana e sitelen toki pi kulupu sina lon lipu ni. o sitelen tawa mkpoli@mkpo.li.',
+		kofi: 'tenpo wan anu tenpo mun ale',
+		company: 'pana mani tan kulupu esun',
+		companyHint: 'mi wile pana e sitelen esun sina lon lipu ni. o pana e lipu tawa mkpoli@mkpo.li.',
 		thanks:
-			'taso pona tawa sina tan ni: sina lukin e toki ni. pana mani sina li moku e mi, li suli e lipu ni 💗',
-		close: 'pini'
+			'sina lukin e toki mi ale. pona mute tawa sina! pona sina li pana e moku tawa mi, li suli e lipu ni 💗',
+		close: 'o pini'
 	},
 	{
 		code: 'lzh',
 		lang: 'lzh',
 		name: '文言',
 		label: '贊助',
-		lead: '妾愛Toki Pona與漢字而作此網，自出數百金。無職，助教之微俸不足償僦賃與饍。或日幾不給食。',
-		ask: '祈助妾得續行🥺雖一⁠金亦能濟今日之飢。',
+		lead: '吾愛Toki Pona與漢字而作此網，自出數百元。今無職，助教之微俸不足以供賃居與食。或日幾不能得食。',
+		ask: '祈助吾得續行🥺雖一⁠元亦能濟今日之飢。',
 		howTo: '助之之道',
-		steps: ['點下方Ko-fi。', '擇其所欲，少亦可也。', '以PayPal或券納之，毋須註冊。'],
+		steps: ['點下方Ko-fi。', '擇其所欲，少亦可也。', '以PayPal或信用卡納之，毋須註冊。'],
 		kofi: '或一給或按月',
 		company: '商號贊助',
-		companyHint: '妾願置閣下之廣告於此網。請書函至mkpoli@mkpo.li。',
-		thanks: '感君至此。閣下之助使妾得食而此網日滋💗',
+		companyHint: '吾願置貴號之廣告於此網。請致函mkpoli@mkpo.li。',
+		thanks: '感君讀至此。君之助使吾得食，而此網日滋💗',
 		close: '閉'
 	}
 ]
