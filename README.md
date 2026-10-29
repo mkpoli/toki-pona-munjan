@@ -49,7 +49,7 @@ This project was an original idea of mine, but there are already many similar pr
 
 ## 資助 / jan pana / Sponsor
 
-mi pali e sitelen Munjan tawa toki pona tan olin taso. mi jo ala e pali ante, la mani lili tan pali sona li suli ala tawa tomo en moku. mani wan taso lon [Ko-fi](https://ko-fi.com/mkpoli) li pana e moku tawa mi tawa tenpo ni. jan pi esun ma li wile pana e mani la o sitelen tawa mkpoli@mkpo.li.
+mi pali e sitelen Munjan tawa toki pona tan olin taso. mi jo ala e pali. mani lili tan pali sona li suli ala tawa tomo en moku. mani wan taso lon [Ko-fi](https://ko-fi.com/mkpoli) li pana e moku tawa mi tawa tenpo ni. jan pi esun ma li wile pana e mani la o sitelen tawa mkpoli@mkpo.li.
 
 I make Sitelen Munjan alone, out of love for toki pona. I don't have a job, and my small TA pay doesn't cover rent and food. Even one dollar on [Ko-fi](https://ko-fi.com/mkpoli) helps me eat today. Companies interested in sponsoring can write to mkpoli@mkpo.li.
 
