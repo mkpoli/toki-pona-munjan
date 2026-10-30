@@ -5,8 +5,8 @@
 	import MdiEmail from '~icons/mdi/email-outline'
 	import { sponsorLocales, type SponsorLocale } from './sponsor'
 
-	// A Sponsor pill led by the author's face, and the dialog it opens: her portrait, why she
-	// needs help, then three steps that end at the Ko-fi button.
+	// A Sponsor pill led by the author's face, and the dialog it opens: her portrait, what a
+	// tip pays for, then three steps that end at the Ko-fi button.
 	let dialog: HTMLDialogElement
 	let pill: HTMLButtonElement
 	let locale: SponsorLocale = sponsorLocales[0]

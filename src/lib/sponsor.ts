@@ -22,38 +22,37 @@ export const sponsorLocales: SponsorLocale[] = [
 		lang: 'en',
 		name: 'English',
 		label: 'Sponsor',
-		lead: "I make this site out of love for Toki Pona and Hanzi, and I've put several hundred dollars of my own into it. I don't have a job, and my small TA pay doesn't cover rent and food. Some days I can barely afford to eat.",
-		ask: 'Please help me keep going 🥺 Even one dollar helps me eat today.',
-		howTo: 'How to help',
+		lead: "I build Sitelen Munjan on my own, with no funding behind it. It's free for everyone, and I'd like to keep it that way.",
+		ask: 'If Sitelen Munjan is useful to you, a tip on Ko-fi gives me time to keep improving it.',
+		howTo: 'How to tip',
 		steps: [
 			'Tap Ko-fi below.',
-			'Pick any amount. Small is fine.',
+			'Pick any amount, one-time or monthly.',
 			'Pay with PayPal or a card. No sign-up needed.'
 		],
 		kofi: 'One-time or monthly',
-		company: 'Company sponsorship',
-		companyHint: "I'd love to put your ad on this site. Please write to mkpoli@mkpo.li.",
-		thanks: 'Thank you for reading this far. Your help keeps me fed and keeps this site growing 💗',
+		company: 'Companies can sponsor too.',
+		companyHint: 'With an ad on this site. Write to mkpoli@mkpo.li.',
+		thanks: 'Thank you for using Sitelen Munjan 💗',
 		close: 'Close'
 	},
 	{
 		code: 'tok',
 		lang: 'art-Latn-x-tokipona',
 		name: 'toki pona',
-		label: 'pana mani',
-		lead: 'mi olin e toki pona e sitelen Hanzi, la mi pali e lipu ni. mi pana e mani mute mi tawa ona. mi jo ala e pali. mani lili mi tan pali pi pana sona li lili tawa tomo en moku. tenpo suno ante la mi ken lili taso esun e moku.',
-		ask: 'o pana e pona tawa mi. ni la mi ken awen pali 🥺 mani wan taso li pana e moku tawa mi lon tenpo suno ni.',
+		label: 'o pana e mani',
+		lead: 'mi wan li pali e ilo Sitelen Munjan. mi jo ala e mani tan jan ante tawa pali ni. jan ale li ken kepeken ilo ni kepeken mani ala. mi wile awen e ni.',
+		ask: 'ilo Sitelen Munjan li pona tawa sina la, sina ken pana e mani lili tawa mi lon ilo Ko-fi. ni la, mi ken kepeken tenpo suli ni: mi awen pona e ilo.',
 		howTo: 'nasin pi pana mani',
 		steps: [
 			'o luka e nena Ko-fi lon anpa.',
-			'o pana e mani pi mute wile sina. mani lili li pona.',
-			'o pana kepeken PayPal anu lipu mani. sina wile ala sitelen e nimi sina.'
+			'o pana e mani pi mute ni: sina wile. sina ken pana lon tenpo wan anu lon tenpo mun ale.',
+			'o pana e mani kepeken ilo PayPal anu lipu mani. sina wile ala kama jan pi ilo Ko-fi.'
 		],
-		kofi: 'tenpo wan anu tenpo mun ale',
-		company: 'pana mani tan kulupu esun',
-		companyHint: 'mi wile pana e sitelen esun sina lon lipu ni. o pana e lipu tawa mkpoli@mkpo.li.',
-		thanks:
-			'sina lukin e toki mi ale. pona mute tawa sina! pona sina li pana e moku tawa mi, li suli e lipu ni 💗',
+		kofi: 'lon tenpo wan anu lon tenpo mun ale',
+		company: 'kulupu esun li ken pana kin e mani.',
+		companyHint: 'mi ken pana e toki esun sina lon lipu ni. o sitelen tawa mkpoli@mkpo.li.',
+		thanks: 'sina kepeken ilo Sitelen Munjan. pona tawa sina 💗',
 		close: 'o pini'
 	},
 	{
@@ -61,14 +60,14 @@ export const sponsorLocales: SponsorLocale[] = [
 		lang: 'lzh',
 		name: '文言',
 		label: '贊助',
-		lead: '吾愛Toki Pona與漢字而作此網，自出數百元。今無職，助教之微俸不足以供賃居與食。或日幾不能得食。',
-		ask: '祈助吾得續行🥺雖一⁠元亦能濟今日之飢。',
-		howTo: '助之之道',
-		steps: ['點下方Ko-fi。', '擇其所欲，少亦可也。', '以PayPal或信用卡納之，毋須註冊。'],
-		kofi: '或一給或按月',
-		company: '商號贊助',
-		companyHint: '吾願置貴號之廣告於此網。請致函mkpoli@mkpo.li。',
-		thanks: '感君讀至此。君之助使吾得食，而此網日滋💗',
+		lead: 'Sitelen Munjan為我一人所作，未受資助。人人皆可免費用之，願長久如此。',
+		ask: '若Sitelen Munjan有益於君，可於Ko-fi小額相助，使我得暇續加改進。',
+		howTo: '相助之法',
+		steps: ['點按下方Ko-fi。', '金額隨意，一次或按月皆可。', '以PayPal或銀行卡付款，無須註冊。'],
+		kofi: '一次或按月皆可',
+		company: '商家亦可贊助。',
+		companyHint: '可於本站刊登廣告，請致函mkpoli@mkpo.li。',
+		thanks: '謝君惠用Sitelen Munjan💗',
 		close: '閉'
 	}
 ]
