@@ -27,12 +27,12 @@ export const sponsorLocales: SponsorLocale[] = [
 		howTo: 'How to tip',
 		steps: [
 			'Tap Ko-fi below.',
-			'Pick any amount, one-time or monthly.',
+			'Pick any amount.',
 			'Pay with PayPal or a card. No sign-up needed.'
 		],
 		kofi: 'One-time or monthly',
 		company: 'Companies can sponsor too.',
-		companyHint: 'With an ad on this site. Write to mkpoli@mkpo.li.',
+		companyHint: 'Write to mkpoli@mkpo.li.',
 		thanks: 'Thank you for using Sitelen Munjan 💗',
 		close: 'Close'
 	},
@@ -46,12 +46,12 @@ export const sponsorLocales: SponsorLocale[] = [
 		howTo: 'nasin pi pana mani',
 		steps: [
 			'o luka e nena Ko-fi lon anpa.',
-			'o pana e mani pi mute ni: sina wile. sina ken pana lon tenpo wan anu lon tenpo mun ale.',
+			'o pana e mani pi mute ni: sina wile.',
 			'o pana e mani kepeken ilo PayPal anu lipu mani. sina wile ala kama jan pi ilo Ko-fi.'
 		],
 		kofi: 'lon tenpo wan anu lon tenpo mun ale',
 		company: 'kulupu esun li ken pana kin e mani.',
-		companyHint: 'mi ken pana e toki esun sina lon lipu ni. o sitelen tawa mkpoli@mkpo.li.',
+		companyHint: 'o sitelen tawa mkpoli@mkpo.li.',
 		thanks: 'sina kepeken ilo Sitelen Munjan. pona tawa sina 💗',
 		close: 'o pini'
 	},
@@ -63,10 +63,10 @@ export const sponsorLocales: SponsorLocale[] = [
 		lead: 'Sitelen Munjan為我一人所作，未受資助。人人皆可免費用之，願長久如此。',
 		ask: '若Sitelen Munjan有益於君，可於Ko-fi小額相助，使我得暇續加改進。',
 		howTo: '相助之法',
-		steps: ['點按下方Ko-fi。', '金額隨意，一次或按月皆可。', '以PayPal或銀行卡付款，無須註冊。'],
+		steps: ['點按下方Ko-fi。', '金額隨意。', '以PayPal或銀行卡付款，無須註冊。'],
 		kofi: '一次或按月皆可',
 		company: '商家亦可贊助。',
-		companyHint: '可於本站刊登廣告，請致函mkpoli@mkpo.li。',
+		companyHint: '請致函mkpoli@mkpo.li。',
 		thanks: '謝君惠用Sitelen Munjan💗',
 		close: '閉'
 	}
