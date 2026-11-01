@@ -49,8 +49,8 @@ This project was an original idea of mine, but there are already many similar pr
 
 ## 資助 / jan pana / Sponsor
 
-mi taso li pali e Sitelen Munjan. jan ala li pana e mani tawa pali ni. jan ale li ken kepeken ona kepeken mani ala. ona li pona tawa sina la, sina ken pana e mani lili tawa mi lon [Ko-fi](https://ko-fi.com/mkpoli). ni li pana e tenpo tawa mi, tawa ni: mi ken awen pona e ona. kulupu esun li wile pana e mani tawa pali ni la, ona li ken sitelen tawa mkpoli@mkpo.li.
+mi taso li pali e Sitelen Munjan. jan ala li pana e mani tawa pali ni. jan ale li ken kepeken ona kepeken mani ala. ona li pona tawa sina la, sina ken pana e mani lili tawa mi lon [Ko-fi](https://ko-fi.com/mkpoli) anu [OFUSE](https://ofuse.me/mkpoli). ni li pana e tenpo tawa mi, tawa ni: mi ken awen pona e ona. kulupu esun li wile pana e mani tawa pali ni la, ona li ken sitelen tawa mkpoli@mkpo.li.
 
-I build Sitelen Munjan on my own, with no funding behind it, and it's free for everyone. If it's useful to you, a tip on [Ko-fi](https://ko-fi.com/mkpoli) gives me time to keep improving it. Companies interested in sponsoring can write to mkpoli@mkpo.li.
+I build Sitelen Munjan on my own, with no funding behind it, and it's free for everyone. If it's useful to you, a tip on [Ko-fi](https://ko-fi.com/mkpoli) or [OFUSE](https://ofuse.me/mkpoli) gives me time to keep improving it. Companies interested in sponsoring can write to mkpoli@mkpo.li.
 
 [![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/mkpoli)
