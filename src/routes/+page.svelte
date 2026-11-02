@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Converter from '$lib/Converter.svelte'
+	import SponsorButton from '$lib/SponsorButton.svelte'
 	import Navigator from '$lib/Navigator.svelte'
 	import Section from '$lib/Section.svelte'
 	import WordTable from '$lib/WordTable.svelte'
@@ -24,6 +25,7 @@
 </svelte:head>
 
 <Navigator {inView} />
+<SponsorButton />
 
 <main>
 	<Section id="home" on:enter={onenter(0)} on:leave={onleave(0)}>
