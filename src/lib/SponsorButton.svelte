@@ -1,6 +1,5 @@
 <script lang="ts">
 	import MdiClose from '~icons/material-symbols/close-rounded'
-	import MdiCoffee from '~icons/mdi/coffee-outline'
 	import MdiArrowRight from '~icons/mdi/arrow-right'
 	import MdiEmail from '~icons/mdi/email-outline'
 	import { sponsorLocales, type SponsorLocale } from './sponsor'
@@ -100,7 +99,7 @@
 			</ol>
 		</section>
 		<a class="kofi" href="https://ko-fi.com/mkpoli" target="_blank" rel="noreferrer noopener">
-			<span class="mark" aria-hidden="true"><MdiCoffee /></span>
+			<img class="mark" src="/brand/kofi-symbol.svg" alt="" width="34" height="27" />
 			<span class="copy"><strong>Ko-fi</strong><small>{locale.kofi}</small></span>
 			<span class="arrow" aria-hidden="true"><MdiArrowRight /></span>
 		</a>
@@ -431,21 +430,19 @@
 		padding-block: 12px;
 		padding-inline: 12px 18px;
 		border-radius: 999px;
-		background: linear-gradient(135deg, #d81b60, #b0124f);
+		background: #202020;
+		border: 1px solid light-dark(#202020, rgb(255 255 255 / 0.2));
 		color: #fff;
 		text-decoration: none;
-		box-shadow: 0 6px 16px rgb(216 27 96 / 0.32);
+		box-shadow: 0 6px 16px rgb(32 32 32 / 0.28);
 	}
 
 	.mark {
-		display: grid;
+		display: block;
 		flex: none;
-		place-items: center;
 		width: 38px;
-		height: 38px;
-		border-radius: 50%;
-		background: rgb(255 255 255 / 0.22);
-		font-size: 20px;
+		height: 30px;
+		object-fit: contain;
 	}
 
 	.arrow {
@@ -554,7 +551,7 @@
 
 		.kofi:hover {
 			transform: translateY(-1px);
-			box-shadow: 0 8px 22px rgb(216 27 96 / 0.42);
+			box-shadow: 0 8px 22px rgb(32 32 32 / 0.38);
 		}
 	}
 
