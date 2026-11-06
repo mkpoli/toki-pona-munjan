@@ -9,6 +9,8 @@ export type SponsorLocale = {
 	steps: [string, string, string]
 	kofi: string
 	ofuse: string
+	supporters: string
+	anonymous: string
 	company: string
 	companyHint: string
 	thanks: string
@@ -26,13 +28,11 @@ export const sponsorLocales: SponsorLocale[] = [
 		lead: "I build Sitelen Munjan on my own, with no funding behind it. It's free for everyone, and I'd like to keep it that way.",
 		ask: 'If Sitelen Munjan is useful to you, a tip gives me time to keep improving it.',
 		howTo: 'How to tip',
-		steps: [
-			'Tap either button below.',
-			'Pick an amount.',
-			'Pay by card. No sign-up needed.'
-		],
+		steps: ['Tap either button below.', 'Pick an amount.', 'Pay by card. No sign-up needed.'],
 		kofi: 'One-time or monthly',
 		ofuse: 'Tip with a message',
+		supporters: 'Recent supporters',
+		anonymous: 'Someone',
 		company: 'Companies can sponsor too.',
 		companyHint: 'Write to mkpoli@mkpo.li.',
 		thanks: 'Thank you for using Sitelen Munjan 💗',
@@ -53,6 +53,8 @@ export const sponsorLocales: SponsorLocale[] = [
 		],
 		kofi: 'lon tenpo wan anu lon tenpo mun ale',
 		ofuse: 'o pana e mani e toki',
+		supporters: 'jan pi pana mani lon tenpo pini poka',
+		anonymous: 'jan wan',
 		company: 'kulupu esun li ken pana kin e mani.',
 		companyHint: 'o sitelen tawa mkpoli@mkpo.li.',
 		thanks: 'sina kepeken ilo Sitelen Munjan. pona tawa sina 💗',
@@ -69,6 +71,8 @@ export const sponsorLocales: SponsorLocale[] = [
 		steps: ['請按下列二鈕之一。', '請擇所贈之數。', '以卡付款，毋須註冊。'],
 		kofi: '一次或按月皆可',
 		ofuse: '薄贈並留言',
+		supporters: '近日惠助者',
+		anonymous: '某人',
 		company: '商家亦可贊助。',
 		companyHint: '請致函mkpoli@mkpo.li。',
 		thanks: '謝君惠用Sitelen Munjan💗',
