@@ -5,26 +5,41 @@
 	import { sponsorLocales, type SponsorLocale } from './sponsor'
 
 	// A Sponsor pill led by the author's face, and the dialog it opens: her portrait, what a
-	// tip pays for, then three steps that end at the Ko-fi button.
+	// tip pays for, then three steps that end at the Ko-fi and OFUSE buttons.
 	let dialog: HTMLDialogElement
 	let pill: HTMLButtonElement
 	let locale: SponsorLocale = sponsorLocales[0]
+	let shown = false
+	let rollLoaded = false
+	let pressedOutside = false
 
+	// The contents render and the supporters roll's script loads when the dialog first opens, so a
+	// page view asks the supporters service for nothing.
 	function open() {
+		shown = true
+		if (!rollLoaded) {
+			rollLoaded = true
+			const script = document.createElement('script')
+			script.type = 'module'
+			script.src = 'https://supporters.mkpo.li/roll.js'
+			document.head.append(script)
+		}
 		dialog.showModal()
 	}
 
 	function onclose() {
+		shown = false
 		pill.focus()
 	}
 
-	// A click on the backdrop closes the dialog; one on its own scrollbar also targets the dialog,
-	// so only a click outside its box counts.
+	// A press or click on the backdrop targets the dialog, and so does one on its own scrollbar or
+	// a text selection dragged out of the box, so the test is by position. Closing needs the press
+	// and the release both outside the box.
 	function outside(event: MouseEvent) {
-		if (event.target !== dialog) return
+		if (event.target !== dialog) return false
 		const box = dialog.getBoundingClientRect()
 		const { clientX: x, clientY: y } = event
-		if (x < box.left || x > box.right || y < box.top || y > box.bottom) dialog.close()
+		return x < box.left || x > box.right || y < box.top || y > box.bottom
 	}
 
 	const heart =
@@ -53,62 +68,94 @@
 	class="sponsor-dialog"
 	aria-labelledby="sponsor-title"
 	on:close={onclose}
-	on:click={outside}
+	on:pointerdown={(event) => (pressedOutside = outside(event))}
+	on:click={(event) => {
+		if (pressedOutside && outside(event)) dialog.close()
+		pressedOutside = false
+	}}
 >
-	<header>
-		<h2 id="sponsor-title" lang={locale.lang}>{locale.label}</h2>
-		<div class="locales" role="group" aria-label="Language">
-			{#each sponsorLocales as l (l.code)}
-				<button
-					type="button"
-					class="locale"
-					lang={l.lang}
-					aria-pressed={l === locale}
-					on:click={() => (locale = l)}>{l.name}</button
+	{#if shown}
+		<header>
+			<h2 id="sponsor-title" lang={locale.lang}>{locale.label}</h2>
+			<div class="locales" role="group" aria-label="Language">
+				{#each sponsorLocales as l (l.code)}
+					<button
+						type="button"
+						class="locale"
+						lang={l.lang}
+						aria-pressed={l === locale}
+						on:click={() => (locale = l)}>{l.name}</button
+					>
+				{/each}
+			</div>
+			<button
+				class="dismiss"
+				type="button"
+				aria-label={locale.close}
+				on:click={() => dialog.close()}
+			>
+				<MdiClose />
+			</button>
+		</header>
+		<div class="sheet" lang={locale.lang}>
+			<div class="hero" aria-hidden="true">
+				<span class="portrait">
+					<img src="/sponsor-portrait.webp" alt="" width="112" height="112" decoding="async" />
+					<svg class="heart" viewBox="0 0 24 24">
+						<path d={heart} />
+						<ellipse
+							class="shine"
+							cx="7.6"
+							cy="9.6"
+							rx="1.5"
+							ry="2.1"
+							transform="rotate(-30 7.6 9.6)"
+						/>
+					</svg>
+				</span>
+				<span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✦</span
 				>
-			{/each}
+			</div>
+			<p class="lead">{locale.lead}</p>
+			<p class="ask">{locale.ask}</p>
+			<section class="how">
+				<h3>{locale.howTo}</h3>
+				<ol class="steps" role="list">
+					{#each locale.steps as step}<li>{step}</li>{/each}
+				</ol>
+			</section>
+			<div class="tips">
+				<a
+					class="tip kofi"
+					href="https://ko-fi.com/mkpoli"
+					target="_blank"
+					rel="noreferrer noopener"
+				>
+					<img class="mark" src="/brand/kofi-symbol.svg" alt="" width="34" height="27" />
+					<span class="copy"><strong>Ko-fi</strong><small>{locale.kofi}</small></span>
+					<span class="arrow" aria-hidden="true"><MdiArrowRight /></span>
+				</a>
+				<a
+					class="tip ofuse"
+					href="https://ofuse.me/mkpoli"
+					target="_blank"
+					rel="noreferrer noopener"
+				>
+					<img class="mark" src="/brand/ofuse-icon.svg" alt="" width="26" height="28" />
+					<span class="copy"><strong>OFUSE</strong><small>{locale.ofuse}</small></span>
+					<span class="arrow" aria-hidden="true"><MdiArrowRight /></span>
+				</a>
+			</div>
+			<a class="company" href="mailto:mkpoli@mkpo.li?subject=Sponsorship%20on%20munjan.mkpo.li">
+				<MdiEmail aria-hidden="true" />
+				<span class="copy"
+					><strong>{locale.company}</strong><small>{locale.companyHint}</small></span
+				>
+			</a>
+			<supporters-roll label={locale.supporters} anonymous={locale.anonymous} />
+			<p class="thanks">{locale.thanks}</p>
 		</div>
-		<button class="dismiss" type="button" aria-label={locale.close} on:click={() => dialog.close()}>
-			<MdiClose />
-		</button>
-	</header>
-	<div class="sheet" lang={locale.lang}>
-		<div class="hero" aria-hidden="true">
-			<span class="portrait">
-				<img src="/sponsor-portrait.webp" alt="" width="112" height="112" decoding="async" />
-				<svg class="heart" viewBox="0 0 24 24">
-					<path d={heart} />
-					<ellipse
-						class="shine"
-						cx="7.6"
-						cy="9.6"
-						rx="1.5"
-						ry="2.1"
-						transform="rotate(-30 7.6 9.6)"
-					/>
-				</svg>
-			</span>
-			<span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✦</span>
-		</div>
-		<p class="lead">{locale.lead}</p>
-		<p class="ask">{locale.ask}</p>
-		<section class="how">
-			<h3>{locale.howTo}</h3>
-			<ol class="steps" role="list">
-				{#each locale.steps as step}<li>{step}</li>{/each}
-			</ol>
-		</section>
-		<a class="kofi" href="https://ko-fi.com/mkpoli" target="_blank" rel="noreferrer noopener">
-			<img class="mark" src="/brand/kofi-symbol.svg" alt="" width="34" height="27" />
-			<span class="copy"><strong>Ko-fi</strong><small>{locale.kofi}</small></span>
-			<span class="arrow" aria-hidden="true"><MdiArrowRight /></span>
-		</a>
-		<a class="company" href="mailto:mkpoli@mkpo.li?subject=Sponsorship%20on%20munjan.mkpo.li">
-			<MdiEmail aria-hidden="true" />
-			<span class="copy"><strong>{locale.company}</strong><small>{locale.companyHint}</small></span>
-		</a>
-		<p class="thanks">{locale.thanks}</p>
-	</div>
+	{/if}
 </dialog>
 
 <style>
@@ -153,7 +200,7 @@
 	.sponsor:focus-visible,
 	.dismiss:focus-visible,
 	.locale:focus-visible,
-	.kofi:focus-visible,
+	.tip:focus-visible,
 	.company:focus-visible {
 		outline: 2px solid var(--sp-ink);
 		outline-offset: 2px;
@@ -423,18 +470,36 @@
 		transform: translateY(-1px);
 	}
 
-	.kofi {
+	.tips {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.tip {
 		display: flex;
 		align-items: center;
 		gap: 12px;
 		padding-block: 12px;
 		padding-inline: 12px 18px;
 		border-radius: 999px;
-		background: #202020;
-		border: 1px solid light-dark(#202020, rgb(255 255 255 / 0.2));
 		color: #fff;
 		text-decoration: none;
-		box-shadow: 0 6px 16px rgb(32 32 32 / 0.28);
+		box-shadow: 0 6px 16px var(--tip-glow);
+	}
+
+	.kofi {
+		--tip-glow: rgb(32 32 32 / 0.28);
+		--tip-glow-hover: rgb(32 32 32 / 0.38);
+		background: #202020;
+		border: 1px solid light-dark(#202020, rgb(255 255 255 / 0.2));
+	}
+
+	.ofuse {
+		--tip-glow: rgb(38 125 160 / 0.3);
+		--tip-glow-hover: rgb(38 125 160 / 0.42);
+		background: #267da0;
+		border: 1px solid #267da0;
 	}
 
 	.mark {
@@ -472,7 +537,7 @@
 		line-height: 1.4;
 	}
 
-	.kofi .copy strong {
+	.tip .copy strong {
 		font-size: 16px;
 	}
 
@@ -545,13 +610,13 @@
 			animation: arrive 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
 		}
 
-		.kofi {
+		.tip {
 			transition: transform 180ms ease, box-shadow 180ms ease;
 		}
 
-		.kofi:hover {
+		.tip:hover {
 			transform: translateY(-1px);
-			box-shadow: 0 8px 22px rgb(32 32 32 / 0.38);
+			box-shadow: 0 8px 22px var(--tip-glow-hover);
 		}
 	}
 

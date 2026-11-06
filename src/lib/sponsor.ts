@@ -8,6 +8,9 @@ export type SponsorLocale = {
 	howTo: string
 	steps: [string, string, string]
 	kofi: string
+	ofuse: string
+	supporters: string
+	anonymous: string
 	company: string
 	companyHint: string
 	thanks: string
@@ -23,14 +26,13 @@ export const sponsorLocales: SponsorLocale[] = [
 		name: 'English',
 		label: 'Sponsor',
 		lead: "I build Sitelen Munjan on my own, with no funding behind it. It's free for everyone, and I'd like to keep it that way.",
-		ask: 'If Sitelen Munjan is useful to you, a tip on Ko-fi gives me time to keep improving it.',
+		ask: 'If Sitelen Munjan is useful to you, a tip gives me time to keep improving it.',
 		howTo: 'How to tip',
-		steps: [
-			'Tap Ko-fi below.',
-			'Pick any amount.',
-			'Pay with PayPal or a card. No sign-up needed.'
-		],
+		steps: ['Tap either button below.', 'Pick an amount.', 'Pay by card. No sign-up needed.'],
 		kofi: 'One-time or monthly',
+		ofuse: 'Tip with a message',
+		supporters: 'Recent supporters',
+		anonymous: 'Someone',
 		company: 'Companies can sponsor too.',
 		companyHint: 'Write to mkpoli@mkpo.li.',
 		thanks: 'Thank you for using Sitelen Munjan 💗',
@@ -42,14 +44,17 @@ export const sponsorLocales: SponsorLocale[] = [
 		name: 'toki pona',
 		label: 'o pana e mani',
 		lead: 'mi wan li pali e ilo Sitelen Munjan. mi jo ala e mani tan jan ante tawa pali ni. jan ale li ken kepeken ilo ni kepeken mani ala. mi wile awen e ni.',
-		ask: 'ilo Sitelen Munjan li pona tawa sina la, sina ken pana e mani lili tawa mi lon ilo Ko-fi. ni la, mi ken kepeken tenpo suli ni: mi awen pona e ilo.',
+		ask: 'ilo Sitelen Munjan li pona tawa sina la, mani lili sina li pana e tenpo tawa mi. mi ken awen pona e ilo ni.',
 		howTo: 'nasin pi pana mani',
 		steps: [
-			'o luka e nena Ko-fi lon anpa.',
-			'o pana e mani pi mute ni: sina wile.',
-			'o pana e mani kepeken ilo PayPal anu lipu mani. sina wile ala kama jan pi ilo Ko-fi.'
+			'o luka e nena wan tan nena tu lon anpa.',
+			'o anu e mute mani.',
+			'o pana e mani kepeken lipu mani. sina wile ala pali e lipu pi jan kepeken.'
 		],
 		kofi: 'lon tenpo wan anu lon tenpo mun ale',
+		ofuse: 'o pana e mani e toki',
+		supporters: 'jan pi pana mani lon tenpo pini poka',
+		anonymous: 'jan wan',
 		company: 'kulupu esun li ken pana kin e mani.',
 		companyHint: 'o sitelen tawa mkpoli@mkpo.li.',
 		thanks: 'sina kepeken ilo Sitelen Munjan. pona tawa sina 💗',
@@ -61,10 +66,13 @@ export const sponsorLocales: SponsorLocale[] = [
 		name: '文言',
 		label: '贊助',
 		lead: 'Sitelen Munjan為我一人所作，未受資助。人人皆可免費用之，願長久如此。',
-		ask: '若Sitelen Munjan有益於君，可於Ko-fi小額相助，使我得暇續加改進。',
+		ask: '若Sitelen Munjan有益於君，薄贈可使吾得暇續修之。',
 		howTo: '相助之法',
-		steps: ['點按下方Ko-fi。', '金額隨意。', '以PayPal或銀行卡付款，無須註冊。'],
+		steps: ['請按下列二鈕之一。', '請擇所贈之數。', '以卡付款，毋須註冊。'],
 		kofi: '一次或按月皆可',
+		ofuse: '薄贈並留言',
+		supporters: '近日惠助者',
+		anonymous: '某人',
 		company: '商家亦可贊助。',
 		companyHint: '請致函mkpoli@mkpo.li。',
 		thanks: '謝君惠用Sitelen Munjan💗',
