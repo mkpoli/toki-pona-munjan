@@ -5,7 +5,7 @@
 	import { sponsorLocales, type SponsorLocale } from './sponsor'
 
 	// A Sponsor pill led by the author's face, and the dialog it opens: her portrait, what a
-	// tip pays for, then three steps that end at the Ko-fi button.
+	// tip pays for, then three steps that end at the Ko-fi and OFUSE buttons.
 	let dialog: HTMLDialogElement
 	let pill: HTMLButtonElement
 	let locale: SponsorLocale = sponsorLocales[0]
@@ -98,11 +98,18 @@
 				{#each locale.steps as step}<li>{step}</li>{/each}
 			</ol>
 		</section>
-		<a class="kofi" href="https://ko-fi.com/mkpoli" target="_blank" rel="noreferrer noopener">
-			<img class="mark" src="/brand/kofi-symbol.svg" alt="" width="34" height="27" />
-			<span class="copy"><strong>Ko-fi</strong><small>{locale.kofi}</small></span>
-			<span class="arrow" aria-hidden="true"><MdiArrowRight /></span>
-		</a>
+		<div class="tips">
+			<a class="tip kofi" href="https://ko-fi.com/mkpoli" target="_blank" rel="noreferrer noopener">
+				<img class="mark" src="/brand/kofi-symbol.svg" alt="" width="34" height="27" />
+				<span class="copy"><strong>Ko-fi</strong><small>{locale.kofi}</small></span>
+				<span class="arrow" aria-hidden="true"><MdiArrowRight /></span>
+			</a>
+			<a class="tip ofuse" href="https://ofuse.me/mkpoli" target="_blank" rel="noreferrer noopener">
+				<img class="mark" src="/brand/ofuse-icon.svg" alt="" width="26" height="28" />
+				<span class="copy"><strong>OFUSE</strong><small>{locale.ofuse}</small></span>
+				<span class="arrow" aria-hidden="true"><MdiArrowRight /></span>
+			</a>
+		</div>
 		<a class="company" href="mailto:mkpoli@mkpo.li?subject=Sponsorship%20on%20munjan.mkpo.li">
 			<MdiEmail aria-hidden="true" />
 			<span class="copy"><strong>{locale.company}</strong><small>{locale.companyHint}</small></span>
@@ -153,7 +160,7 @@
 	.sponsor:focus-visible,
 	.dismiss:focus-visible,
 	.locale:focus-visible,
-	.kofi:focus-visible,
+	.tip:focus-visible,
 	.company:focus-visible {
 		outline: 2px solid var(--sp-ink);
 		outline-offset: 2px;
@@ -423,18 +430,36 @@
 		transform: translateY(-1px);
 	}
 
-	.kofi {
+	.tips {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.tip {
 		display: flex;
 		align-items: center;
 		gap: 12px;
 		padding-block: 12px;
 		padding-inline: 12px 18px;
 		border-radius: 999px;
-		background: #202020;
-		border: 1px solid light-dark(#202020, rgb(255 255 255 / 0.2));
 		color: #fff;
 		text-decoration: none;
-		box-shadow: 0 6px 16px rgb(32 32 32 / 0.28);
+		box-shadow: 0 6px 16px var(--tip-glow);
+	}
+
+	.kofi {
+		--tip-glow: rgb(32 32 32 / 0.28);
+		--tip-glow-hover: rgb(32 32 32 / 0.38);
+		background: #202020;
+		border: 1px solid light-dark(#202020, rgb(255 255 255 / 0.2));
+	}
+
+	.ofuse {
+		--tip-glow: rgb(38 125 160 / 0.3);
+		--tip-glow-hover: rgb(38 125 160 / 0.42);
+		background: #267da0;
+		border: 1px solid #267da0;
 	}
 
 	.mark {
@@ -472,7 +497,7 @@
 		line-height: 1.4;
 	}
 
-	.kofi .copy strong {
+	.tip .copy strong {
 		font-size: 16px;
 	}
 
@@ -545,13 +570,13 @@
 			animation: arrive 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
 		}
 
-		.kofi {
+		.tip {
 			transition: transform 180ms ease, box-shadow 180ms ease;
 		}
 
-		.kofi:hover {
+		.tip:hover {
 			transform: translateY(-1px);
-			box-shadow: 0 8px 22px rgb(32 32 32 / 0.38);
+			box-shadow: 0 8px 22px var(--tip-glow-hover);
 		}
 	}
 
