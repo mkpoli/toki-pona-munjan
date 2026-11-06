@@ -30,7 +30,9 @@
 <main>
 	<Section id="home" on:enter={onenter(0)} on:leave={onleave(0)}>
 		<h1>
-			<span lang="art-HanT-x-tokipona">書文言</span><br />
+			<site-switcher current="munjan"
+				><a href="/"><span lang="art-HanT-x-tokipona">書文言</span></a></site-switcher
+			><br />
 			sitelen Munjan
 		</h1>
 	</Section>
@@ -128,6 +130,10 @@
 	h2 {
 		text-align: center;
 		margin: 0;
+	}
+
+	h1 a {
+		text-decoration: none;
 	}
 
 	h1 {
