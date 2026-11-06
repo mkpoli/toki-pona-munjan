@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tick } from 'svelte'
 	import MdiClose from '~icons/material-symbols/close-rounded'
 	import MdiArrowRight from '~icons/mdi/arrow-right'
 	import MdiEmail from '~icons/mdi/email-outline'
@@ -15,7 +16,7 @@
 
 	// The contents render and the supporters roll's script loads when the dialog first opens, so a
 	// page view asks the supporters service for nothing.
-	function open() {
+	async function open() {
 		shown = true
 		if (!rollLoaded) {
 			rollLoaded = true
@@ -24,6 +25,7 @@
 			script.src = 'https://supporters.mkpo.li/roll.js'
 			document.head.append(script)
 		}
+		await tick()
 		dialog.showModal()
 	}
 
