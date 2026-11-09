@@ -174,10 +174,14 @@
 		align-items: center;
 		gap: 0.5em;
 		padding: 0.55em 1.2em;
-		border: 1px solid rgba(255, 255, 255, 0.7);
+		border: 1px solid transparent;
 		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.92);
+		color: rgb(0, 16, 148);
 		font-size: 0.8em;
 		text-decoration: none;
+		text-shadow: none;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 		transition: color 0.2s, background-color 0.2s;
 	}
 
@@ -188,13 +192,12 @@
 
 	.download a:hover,
 	.download a:focus-visible {
-		background: white;
-		color: rgb(0, 16, 148);
-		text-shadow: none;
+		background: rgb(0, 16, 148);
+		color: white;
 	}
 
 	.download a:focus-visible {
-		outline: 2px solid white;
+		outline: 2px solid rgb(0, 16, 148);
 		outline-offset: 3px;
 	}
 
