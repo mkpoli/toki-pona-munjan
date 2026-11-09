@@ -1,4 +1,5 @@
 <script lang="ts">
+	import MdiDownload from '~icons/mdi/download'
 	import Converter from '$lib/Converter.svelte'
 	import SponsorButton from '$lib/SponsorButton.svelte'
 	import Navigator from '$lib/Navigator.svelte'
@@ -59,6 +60,16 @@
 			Rime Schema: <a href="https://github.com/mkpoli/rime-toki-pona-munjan"
 				>rime-toki-pona-munjan</a
 			>
+		</p>
+
+		<p class="download">
+			<a
+				href="https://github.com/mkpoli/rime-toki-pona-munjan/archive/refs/heads/main.zip"
+				title="Latest RIME schema and word list from the main branch"
+			>
+				<MdiDownload aria-hidden="true" />
+				<span>Download RIME schema <small>(.zip)</small></span>
+			</a>
 		</p>
 	</Section>
 
@@ -152,6 +163,44 @@
 		text-align: center;
 		margin: 0;
 		margin-bottom: 1em;
+	}
+
+	.download {
+		margin-top: 0.5em;
+	}
+
+	.download a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		padding: 0.55em 1.2em;
+		border: 1px solid rgba(255, 255, 255, 0.7);
+		border-radius: 999px;
+		font-size: 0.8em;
+		text-decoration: none;
+		transition: color 0.2s, background-color 0.2s;
+	}
+
+	.download a :global(svg) {
+		width: 1.1em;
+		height: 1.1em;
+	}
+
+	.download a:hover,
+	.download a:focus-visible {
+		background: white;
+		color: rgb(0, 16, 148);
+		text-shadow: none;
+	}
+
+	.download a:focus-visible {
+		outline: 2px solid white;
+		outline-offset: 3px;
+	}
+
+	.download small {
+		font-size: 0.8em;
+		opacity: 0.8;
 	}
 
 	a {
