@@ -62,7 +62,7 @@
 			>
 		</p>
 
-		<p class="download">
+		<p class="download" lang="en">
 			<a
 				href="https://github.com/mkpoli/rime-toki-pona-munjan/archive/refs/heads/main.zip"
 				title="Latest RIME schema and word list from the main branch"
@@ -182,7 +182,7 @@
 		text-decoration: none;
 		text-shadow: none;
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-		transition: color 0.2s, background-color 0.2s;
+		transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 	}
 
 	.download a :global(svg) {
@@ -190,14 +190,16 @@
 		height: 1.1em;
 	}
 
-	.download a:hover,
-	.download a:focus-visible {
-		background: rgb(0, 16, 148);
-		color: white;
+	.download a:hover {
+		background: white;
+		border-color: rgb(0, 16, 148);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
 	}
 
 	.download a:focus-visible {
-		outline: 2px solid rgb(0, 16, 148);
+		background: white;
+		border-color: rgb(0, 16, 148);
+		outline: 3px solid white;
 		outline-offset: 3px;
 	}
 
